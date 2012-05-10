@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document 
+*经典表格效果css样式:<table class="classtable" width="98%" border="0" cellspacing="0" cellpadding="0">
+*/
+
+.classtable{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:10px; border-collapse:collapse;}
+.classtable td,.classtable th{border:1px solid #ccc; padding:5px 10px;}
+
+
+#faf{overflow:hidden; /*注意不要写在最后了*/
+-o-text-overflow: ellipsis; /*firefox*/
+text-overflow:ellipsis; 
+/*
+text-overflow : clip | ellipsis 
+参数：
+clip :  不显示省略标记（...），而是简单的裁切
+ellipsis :  当对象内文本溢出时显示省略标记（...）
+说明：
+设置或检索是否使用一个省略标记（...）标示对象内文本的溢出。
+对应的脚本特性为textOverflow。请参阅我编写的其他书目。
+*/
+white-space:nowrap; /*规定段落中的文本不进行换行*/
+
+width:100px;}

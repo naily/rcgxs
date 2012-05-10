@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统注册</title>
+<link rel="stylesheet" type="text/css" href="js/ext/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="js/ext/resources/css/xtheme-gray.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript" src="js/ext/adapter/ext/ext-base.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ext/ext-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ext/locale/ext-lang-zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/cxcjs/cxcjs_base.js"></script>
+<script type="text/javascript" src="js/cxcjs/cxcjs_plusin.js"></script>
+<style>
+.inputwidth{width:160px;}
+</style>
+</head>
+
+<body>
+<div class="head"></div>
+<div class="nav">
+	<table width="90%" border="0" align="center" class="nav_f">
+   <tr>
+   	<td height="25" align="center" valign="bottom"><a href="index.do" class="a1">首&nbsp;页</a></td>
+    <td height="25" align="center" valign="bottom"><a href="hzsgl.do" class="a1">合作社管理</a></td>
+    <td align="center" valign="bottom"><a href="fxcj.do" class="a1">风险预报</a></td>
+    <td align="center" valign="bottom"><a href="dffc.do" class="a1">地方风采</a></td>
+	<td align="center" valign="bottom"><a href="snlist.do" class="a1">三农资讯</a></td>
+	<td align="center" valign="bottom"><a href="cxcj.do" class="a1">产销促进</a></td>
+	<td align="center" valign="bottom"><a href="#" class="a1">对接评估</a></td>
+	<td align="center" valign="bottom"><a href="msgbox.do" class="a1">政府信箱</a></td>
+	<td align="center" valign="bottom"><a href="system.do" class="a1">系统管理</a></td>
+  </tr>
+</table>
+</div> <!--nav end-->
+<div class="pagebody">
+  <table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" bordercolor="#D4D0C8" bgcolor="#BBBBBB">
+    
+     <tr>
+      <td height="25" align="right" bgcolor="#FFFFFF" >序列号：</td>
+      <td height="25" bgcolor="#FFFFFF" ><input name="serialNo" id="serialNoid" class="inputwidth" type="text"  /></td>
+    </tr>
+    <tr>
+    <tr>
+      <td height="25" align="right" bgcolor="#FFFFFF" >用户类型：</td>
+      <td height="25" bgcolor="#FFFFFF" >
+		<input name="user_type" type="radio"  value="6012" />县市
+		<input name="user_type" type="radio" checked="true"  value="6011" />乡镇</td>
+    </tr>
+    <tr >
+      <td height="20" align="right" bgcolor="#FFFFFF" >所属地区：</td>
+      <td height="20" bgcolor="#FFFFFF" >
+      <span id='comboArea'>&nbsp;</span><span style="color:#CCC;font-size:12px;">&nbsp;&nbsp;注:如果所在的县市/乡镇不存在，请拨联系电话：84980599</span>
+      </td>
+    </tr>
+    <tr >
+      <td width="18%" height="25" align="right" bgcolor="#FFFFFF" >用户名：</td>
+      <td width="82%" height="25" bgcolor="#FFFFFF"  >
+      <input name="loginName" id="loginName"  type="text"  size="15" class="inputwidth"/>
+      <div class="msg"></div> </td>
+      </tr>
+    <tr>
+      <td height="25" align="right" bgcolor="#FFFFFF" >密  码：</td>
+      <td height="25" bgcolor="#FFFFFF" ><input name="password" width="20" class="inputwidth" type="password"  id="password" size="15"/></td>
+      </tr>
+    <tr>
+      <td height="25" align="right" bgcolor="#FFFFFF" >密码确认：</td>
+      <td height="25" bgcolor="#FFFFFF" ><input name="password1" id="password1" class="inputwidth" type="password"  size="15"/></td>
+    </tr>
+    <tr>
+      <td height="25" align="right" bgcolor="#FFFFFF" >验证码：</td>
+      <td height="25" bgcolor="#FFFFFF" >
+      <input name="imagecod"  type="text" id="imagecod"  size="15"/>
+      <img border=0 src="cxcjs_code.do"></td>
+      </tr>
+      <!--
+    <tr>
+      <td height="25" colspan="2" align="center" bgcolor="#FFFFFF" ><input type="checkbox" name="agree" onclick="isAgree();" id="checkbox" />
+        我已阅读并同意<a href="" target="_blank">《产销对接港平台用户协议》</a></td>
+      </tr>
+      -->
+    <tr>
+      <td height="25" colspan="2" align="center" bgcolor="#FFFFFF" >
+      <input type="button" name="button" id="butt_submit"  value="提交" /></td>
+    </tr>
+  </table>
+<div class="footer">版权：2011 v 1.0   提供商：中商商业发展规划院有限公司  联系电话：010-51665353-652</div>
+</div>
+</body>
+
+<script language="javascript">
+$(document).ready(function(){
+	var msgarea = new Ext.Strong.TreeComboBox({
+		id : 'Ext.cxcjs.reg_area_id_0',
+		renderTo: 'comboArea',
+        hiddenName : 'msgArea',
+        editable : false,
+        shadow : true,
+        width : 160,
+        maxHeight : 240,
+        mode : 'local',
+        displayField : 'text',
+        valueField : 'id',
+        triggerAction : 'all',
+        allowBlank : false,
+        treeUrl : 'getChildrenCountyByID.do',
+        rootText : 'root',
+        rootId : '0',
+        forceSelection : true,
+        rootVisible : false,
+        _onSelect : function() {}
+	});
+	var cxcjs_reg = {
+		check_str : function(str_){
+			if(undefined == str_ || ''== str_ || null == str_){
+				return false ;
+			}else{
+				return true;
+			}
+		},
+		reg_submit : function(){
+			var area = Ext.getCmp('Ext.cxcjs.reg_area_id_0').value;
+			var logname = $("#loginName").val();
+			var pas = $("#password").val();
+			var pas1 = $("#password1").val();
+			var pcode = $("#imagecod").val();
+			var serialNo = $("#serialNoid").val();
+			var ty_ = $("input[name='user_type'][checked]").val(); 
+			//alert(ty_);
+			if(!cxcjs_reg.check_str(serialNo)){
+				alert("请输入序列号");
+				return  ;
+			}
+			if(!cxcjs_reg.check_str(area)){
+				alert("请选择地区");
+				return  ;
+			}
+			if(!cxcjs_reg.check_str(logname)){
+				alert("请输入登录名");
+				$("#loginName").focus();
+				return  ;
+			}
+			if(!cxcjs_reg.check_str(pas)){
+				alert("请输入密码");
+				$("#password").focus();
+				return  ;
+			}
+			if(!cxcjs_reg.check_str(pas1)){
+				alert("请输入确认密码");
+				$("#password1").focus();
+				return  ;
+			}
+			if(pas !=(pas1)){
+				alert("两次密码不相等");
+				$("#password1").focus();
+				return  ;
+			}
+			if(!cxcjs_reg.check_str(pcode)){
+				alert("请输入验证码");
+				$("#imagecod").focus();
+				return  ;
+			}
+				//alert(area);
+			if('6011' == ty_){ //乡镇
+				 if(area.indexOf('00') > -1){
+					alert('请选择乡镇');
+					return ;
+				}
+			}
+			if('6012' == ty_){
+				if(area.indexOf('0000') > -1){
+					alert('请选择县市');
+					return ;
+				}
+			}
+			//验证结束
+			$("#butt_submit").attr("disabled","disabled");
+			$.getJSON("userReg.do", { userName: logname, passWord: pas ,pageCode:pcode,areaCode:area,userType:ty_,serialNo:serialNo},
+			  function(json){
+				  if(json.success){
+					  alert(json.info);
+					  window.location.href = "index.do";
+					  return ;
+			  		}else{
+			  			alert(json.info);
+			  		}
+				$("#butt_submit").attr("disabled",false);
+			}); 
+			
+		}
+	}
+	
+	$("#butt_submit").bind('click',cxcjs_reg.reg_submit);
+});
+
+</script>
+</html>

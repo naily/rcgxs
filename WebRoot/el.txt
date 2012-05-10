@@ -1,0 +1,47 @@
+与范围有关的EL 隐含对象包含以下四个：pageScope、requestScope、sessionScope 和
+applicationScope；
+与输入有关的隐含对象
+与输入有关的隐含对象有两个：param和paramValues，它们是EL中比较特别的隐含对象。
+
+迭代标签
+语法：<c:forEach items="collection" var="name" varStatus="status" begin="int" 
+end="int" step="int" >
+           //循环体
+           </c:forEach>
+     说明:1)items:是集合，用EL表达式；
+       2)var:变量名，存放items
+       3)varStatus: 显示循环状态的变量
+①index:从0开始;
+                     ②count:元素位置,从1开始;
+                     ③first:如果是第一个元素则显示true;
+                     ④last:如果是最后一个元素则显示true;
+       4)begin:循环的初始值(整型)；
+       5)end: 循环结束 ;
+       6)step:步长,循环间隔的数值；
+7、<c:otherwise>标签
+     例：
+如果user.wealthy值true，则显示user.wealthy is true.
+<c:choose>
+<c:when test="">
+user.generous is true.
+</c:when>
+<c:when test="">
+user.stingy is true.
+</c:when>
+<c:otherwise>
+user.generous and user.stingy are false.
+</c:otherwise>
+</c:choose>
+说明：只有当条件user.generous返回值是true时，才显示user.generous is true.
+只有当条件user.stingy返回值是true时，才显示user.stingy is true.
+其它所有的情况（即user.generous和user.stingy的值都不为true）全部显示user.generous and 
+user.stingy are false.
+由于JSTL没有形如if (){…} else {…}的条件语句，所以这种形式的语句只能用<c:choose>、
+<c:when>和<c:otherwise>标签共同来完成了。
+
+
+<c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if>
+<c:if test="${"".equals("hzsgl.do")}">class='nav_selected'</c:if>
+	
+	
+	

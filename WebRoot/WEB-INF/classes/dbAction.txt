@@ -1,0 +1,22 @@
+mysql一些操作
+1，进入数据库
+mysql -h localhost -u root -p 123456
+2，导出数据库
+C:\Documents and Settings\zdd>mysqldump -h localhost -u root -p cxcjs > e:\dppc\
+cxcjs\cxcjs.sql
+Enter password: ******
+3，导出某个表
+C:\Documents and Settings\zdd>mysqldump -h localhost -u root -p cxcjs cxcjs_user
+> e:\dppc\cxcjs\cxcjs_user_table.sql
+Enter password: ******
+
+C:\Documents and Settings\zdd>mysqldump -h localhost -u root -p cxcjs cxcjs_menu
+info> e:\dppc\cxcjs\cxcjs_menuinfo_table.sql
+Enter password: ******
+
+C:\Documents and Settings\zdd>mysqldump -h localhost -u root -p cxcjs cxcjs_area
+> e:\dppc\cxcjs\cxcjs_area_table.sql
+Enter password: ******
+4，仅仅导出数据库表结构
+C:\Documents and Settings\zdd>mysqldump -h localhost -u root -p cxcjs --opt -d >
+ e:\dppc\cxcjs\cxcjs_stru.sql

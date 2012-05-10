@@ -1,0 +1,19 @@
+
+<ioc xsi:noNamespaceSchemaLocation="nutz-ioc-0.1.xsd">
+     <obj name="dataSource" type="org.apache.commons.dbcp.BasicDataSource">
+             <events>
+                     <depose>close</depose>
+             </events>
+             <field name="driverClassName"><str>com.mysql.jdbc.Driver</str></field>
+             <field name="url"><str>jdbc:mysql://192.168.1.40:3308/cxcjs?useUnicode=true&amp;characterEncoding=utf8</str></field>
+             <field name="username"><str>root</str></field>
+             <field name="password"><str>root</str></field>
+             <field name="defaultCatalog"><str>cxcjs</str></field>
+     </obj>
+     <obj name="commonDao" type="org.nutz.dao.impl.NutDao"  singleton="true" scope="app">
+		<args>
+			<refer>dataSource</refer>
+		</args>
+     </obj>
+     
+</ioc>
